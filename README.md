@@ -11,3 +11,8 @@
 =======
 | GET  | /api/content/        | getAll       | Gets the full list of all celebrities. | Returns an array of `getById` objects.|
 >>>>>>> 93dd9fd8c8e7ba28cac386cb69da4b831d936863
+{
+        "id": 1,
+        "username": "robert",
+        "password": "password1"
+    }
