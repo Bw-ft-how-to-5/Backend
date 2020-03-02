@@ -1,0 +1,20 @@
+{
+  "name": "Backend",
+  "version": "1.0.0",
+  "description": "- Field contents are not checked for formatting or proper data. *Garbage in, garbage out.* - Check the `getById` output example below for the fields to send. - `POST` - all fields are required *except id*. - `PUT` - all fields are required ***including*** *id*.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bw-ft-how-to-5/Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bw-ft-how-to-5/Backend/issues"
+  },
+  "homepage": "https://github.com/Bw-ft-how-to-5/Backend#readme"
+}
