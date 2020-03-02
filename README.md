@@ -6,4 +6,8 @@
 - `PUT` - all fields are required ***including*** *id*.
 
 | HTTP | Path               | route method | Desc                           | Data|
+<<<<<<< HEAD
 | GET  | /api/content/        | getAll       | Gets the full list of all celebrities. | Returns an array of `getById` objects.|
+=======
+| GET  | /api/content/        | getAll       | Gets the full list of all celebrities. | Returns an array of `getById` objects.|
+>>>>>>> 93dd9fd8c8e7ba28cac386cb69da4b831d936863
