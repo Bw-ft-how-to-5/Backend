@@ -1,6 +1,8 @@
 const express = require('express');
 const Users = require('./users_model.js');
 const router = express.Router();
+const jwt = require('jsonwebtoken');//install npm i jsonwebtoken
+const {jwtSecret} = require('../config/secrets.js');
 router.get('/', (req, res) => {
     Users.get()
     .then(users => {
@@ -92,5 +94,14 @@ router.delete('/:id', (req, res) => {
       })
     
 });
-
+function generateToken(user){
+    const payload = {
+      username: user.username,
+    };
+    const secret = process.env.JWT_SECRET || "is it secret, or is it safe";
+    const options = {
+      expiresIn: '1h'
+    };
+    return jwt.sign(payload, jwtSecret, options)
+  }
 module.exports = router;
