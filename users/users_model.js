@@ -2,6 +2,7 @@ const db = require('../data/dbConfig.js');
 module.exports = {
   get,
   getById,
+  getBy,
   getUserStudy,
   getUserTime,
   insert,
@@ -15,6 +16,10 @@ function getById(id) {
   return db('users')
     .where({ id })
     .first();
+}
+function getBy(data) {
+  return db('users')
+    .where({ data })
 }
 function getUserStudy(userId) {
   return db('study as s')
