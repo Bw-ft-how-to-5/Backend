@@ -20,7 +20,7 @@ function getById(id) {
 }
 function getBy(data) {
   return db('users')
-    .where({ data })
+    .where( data )
 }
 function findBy(filter) {
   return db('users').where(filter);
