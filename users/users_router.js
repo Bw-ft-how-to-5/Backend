@@ -29,24 +29,23 @@ router.post('/login', (req, res) => {
     let { username, password } = req.body;
   
     Users.findBy({ username })
+
       .first()
       .then(user => {
         if (user && bcrypt.compareSync(password, user.password)) {
-          const token = generateToken(user); // get token
-          res.status(200).json({
-            message: `Welcome ${user.username}!`,
-            token, // send token
-          });
+          const token = generateToken(user);
+          res
+            .status(200)
+            .json({ message: `Welcome back, ${username}`, user, token: token });
         } else {
-          res.status(401).json({ message: 'Invalid Credentials' });
+          res.status(401).json({ message: "invalid username/password" });
         }
       })
-      .catch(error => {
-        console.log(error);
-        res.status(500).json(error);
+      .catch(err => {
+        res.status(500).json({ Error: "failed to retrieve database", err });
       });
   });
-  
+
 router.get('/', auth, (req, res) => {
     Users.get()
     .then(users => {
