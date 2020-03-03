@@ -40,31 +40,6 @@ router.put('/:id', (req, res) => {
         })
     })
 });
-router.get('/study/:id', (req, res) => {
-    const id = req.params.id;
-    Users.getUserStudy(id)
-    .then(studies => {
-        res.status(200).json(studies)
-    })
-    .catch(error => {
-        console.log(error);
-        res.status(500).json({
-            error: error
-        })
-    })
-});
-router.get('/time/:id', (req, res) => {
-    const id = req.params.id;
-    Users.getUserTime(id)
-    .then(times => {
-        res.status(200).json(times)
-    })
-    .catch(error => {
-        console.log(error);
-        res.status(500).json({
-            error: error
-        })
-    })
-});
+
 
 module.exports = router;
