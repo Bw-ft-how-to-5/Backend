@@ -1,20 +1,22 @@
-const jwt = require('jsonwebtoken');//install npm i jsonwebtoken
-const { jwtSecret} = require('../config/secrets.js');
+const jwt = require("jsonwebtoken");
+const secret = require("../config/secrets.js");
 
-module.exports = (req, res, next) => {
-  const { authorization } = req.headers;
-  
-  if (authorization) {
-    jwt.verify(authorization, secret, (err, decodedToken)=>{
+function auth(req, res, next) {
+  const token = req.headers.authorization;
+  if (req.decodedJwt) {
+    next();
+  } else if (token) {
+    jwt.verify(token, secret.jwtSecret, (err, decodedJwt) => {
       if (err) {
-        res.status(401).json({ message: 'Invalid Credentials' });
-        
+        res.status(401).json({ message: "you are not authorized" });
       } else {
-        req.decodedToken = decodeToken;
+        req.decodedJwt = decodedJwt;
         next();
       }
     });
   } else {
-    res.status(400).json({ message: 'No credentials provided' });
+    res.status(401).json({ message: "you are not authorized" });
   }
-};
+}
+
+module.exports = auth;
