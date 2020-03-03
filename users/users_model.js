@@ -3,8 +3,8 @@ module.exports = {
   get,
   getById,
   getBy,
-  getUserStudy,
-  getUserTime,
+  //getUserStudy,
+  //getUserTime,
   insert,
   update,
   remove,
@@ -26,18 +26,19 @@ function findBy(filter) {
   return db('users').where(filter);
 }
 
-function getUserStudy(userId) {
-  return db('study as s')
-    .join('users as u', 'u.id', 's.userid')
-    .select('u.id', 's.id', 's.title', 's.description')
-    .where('s.user_id', userId);
-}
-function getUserTime(userId) {
-    return db('time as t')
-      .join('users as u', 'u.id', 't.userid')
-      .select('u.id', 't.id', 't.title', 't.description')
-      .where('t.user_id', userId);
-  }
+// function getUserStudy(userId) {
+//   return db('study as s')
+//     .join('users as u', 'u.id', 's.userid')
+//     .select('u.id', 's.id', 's.title', 's.description')
+//     .where('s.user_id', userId);
+// }
+// function getUserTime(userId) {
+//     return db('time as t')
+//       .join('users as u', 'u.id', 't.userid')
+//       .select('u.id', 't.id', 't.title', 't.description')
+//       .where('t.user_id', userId);
+//   }
+
 function insert(user) {
   return db('users')
     .insert(user)

@@ -24,10 +24,12 @@ router.post("/register", (req, res) => {
         res.status(500).json({ Error: "failed to retrieve database", err });
       });
   });
+
+router.post('/login', (req, res) => {
+    let { username, password } = req.body;
   
-  router.post("/login", (req, res) => {
-    const { username, password } = req.body;
-    Users.getBy( username )
+    Users.findBy({ username })
+
       .first()
       .then(user => {
         if (user && bcrypt.compareSync(password, user.password)) {
@@ -43,7 +45,6 @@ router.post("/register", (req, res) => {
         res.status(500).json({ Error: "failed to retrieve database", err });
       });
   });
-
 
 router.get('/', auth, (req, res) => {
     Users.get()
@@ -124,16 +125,16 @@ router.delete('/:id', auth, (req, res) => {
       })
     
 });
-function generateToken(user){
-    const payload = {
-      username: user.username,
-    };
-    const secret = process.env.JWT_SECRET || "is it secret, or is it safe";
-    const options = {
-      expiresIn: '1h'
-    };
-    return jwt.sign(payload, jwtSecret, options)
-  }
+// function generateToken(user){
+//     const payload = {
+//       username: user.username,
+//     };
+//     const secret = process.env.JWT_SECRET || "is it secret, or is it safe";
+//     const options = {
+//       expiresIn: '1h'
+//     };
+//     return jwt.sign(payload, jwtSecret, options)
+//   }
 
   function generateToken(user) {
     const payload = {
@@ -143,7 +144,7 @@ function generateToken(user){
     const options = {
       expiresIn: "8h"
     };
-    const token = jwt.sign(payload, secret.jwtSecret, options);
+    const token = jwt.sign(payload, jwtSecret, options);
     return token;
   }
 module.exports = router;
