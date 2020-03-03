@@ -80,4 +80,17 @@ router.get('/time/:id', (req, res) => {
     })
 });
 
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    Users.remove(id)
+      .then(deleted => {
+        res.status(200).json({ message: 'User has been successfully deleted.' })
+      })
+      .catch(err => {
+        console.log('error in delete', err)
+        res.status(500).json({ errorMessage: 'The post could not be removed.' })
+      })
+    
+});
+
 module.exports = router;

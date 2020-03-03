@@ -13,6 +13,19 @@ router.get('/', (req, res) => {
         })
     })
 });
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+    Time.getById(id)
+    .then(time => {
+        res.status(200).json(time)
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(500).json({
+            error: error
+        })
+    })
+});
 router.post('/', (req, res) => {
     const times = req.body;
     Time.insert(times)
@@ -29,7 +42,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     const times = req.body;
     const id = req.params.id;
-    Users.update(id, times)
+    Time.update(id, times)
     .then(times => {
         res.status(200).json(times)
     })
@@ -39,6 +52,19 @@ router.put('/:id', (req, res) => {
             error: error
         })
     })
+});
+
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    Time.remove(id)
+      .then(deleted => {
+        res.status(200).json({ message: 'User has been successfully deleted.' })
+      })
+      .catch(err => {
+        console.log('error in delete', err)
+        res.status(500).json({ errorMessage: 'The post could not be removed.' })
+      })
+    
 });
 
 
