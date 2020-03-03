@@ -8,6 +8,7 @@ module.exports = {
   insert,
   update,
   remove,
+  findBy,
 };
 function get() {
   return db('users');
@@ -21,6 +22,10 @@ function getBy(data) {
   return db('users')
     .where({ data })
 }
+function findBy(filter) {
+  return db('users').where(filter);
+}
+
 function getUserStudy(userId) {
   return db('study as s')
     .join('users as u', 'u.id', 's.userid')
