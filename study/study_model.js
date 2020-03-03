@@ -1,5 +1,6 @@
 const db = require('../data/dbConfig.js');
 module.exports = {
+  getStudyByUserId,
   get,
   getById,
   getBy,
@@ -7,6 +8,9 @@ module.exports = {
   update,
   remove,
 };
+function getStudyByUserId(id) {
+  return db('study').where({ userid: id })
+  }
 function get() {
   return db('study');
 }

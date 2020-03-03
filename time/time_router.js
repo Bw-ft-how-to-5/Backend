@@ -26,6 +26,19 @@ router.get('/:id', (req, res) => {
         })
     })
 });
+router.get('/user/:id', (req, res) => {
+    const id = req.params.id;
+    Time.getTimeByUserId(id)
+    .then(study => {
+        res.status(200).json(study)
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(500).json({
+            error: error
+        })
+    })
+});
 router.post('/', (req, res) => {
     const times = req.body;
     Time.insert(times)

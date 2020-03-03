@@ -1,5 +1,6 @@
 const db = require('../data/dbConfig.js');
 module.exports = {
+  getTimeByUserId,
   get,
   getById,
   getBy,
@@ -7,6 +8,10 @@ module.exports = {
   update,
   remove,
 };
+
+function getTimeByUserId(id) {
+  return db('time').where({ userid: id })
+  }
 function get() {
   return db('time');
 }

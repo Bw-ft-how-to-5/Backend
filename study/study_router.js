@@ -13,9 +13,9 @@ router.get('/', (req, res) => {
         })
     })
 });
-router.get('/:id', (req, res) => {
+router.get('/user/:id', (req, res) => {
     const id = req.params.id;
-    Study.getById(id)
+    Study.getStudyByUserId(id)
     .then(study => {
         res.status(200).json(study)
     })
