@@ -1,19 +1,36 @@
 # Updated Robert Elias Branch
 # Backend for How-To App
 
-- Field contents are not checked for formatting or proper data. *Garbage in, garbage out.*
-- Check the `getById` output example below for the fields to send.
-- `POST` - all fields are required *except id*.
-- `PUT` - all fields are required ***including*** *id*.
+https://howto5.herokuapp.com/
 
-| HTTP | Path               | route method | Desc                           | Data|
-<<<<<<< HEAD
-| GET  | /api/content/        | getAll       | Gets the full list of all celebrities. | Returns an array of `getById` objects.|
-=======
-| GET  | /api/content/        | getAll       | Gets the full list of all celebrities. | Returns an array of `getById` objects.|
->>>>>>> 93dd9fd8c8e7ba28cac386cb69da4b831d936863
-{
-        "id": 1,
+| HTTP | Path                 |  Desc                                       |
+| GET  | /api/users/          |  Gets the full list users                   |
+| POST | /api/users/register  |  Register                                   | Doesn't need token.
+| POST | /api/users/login     |  Login                                      | Doesn't need token.
+
+| GET  | /api/study/          |  Gets all of the study posts                |
+| GET  | /api/study/:id       |  Gets all of the study posts by post ID     |
+| GET  | /api/study/user/:id  |  Gets all of the study posts by that userid |
+| POST | /api/study/          |  Adds a new study post to the database.     |
+| PUT  | /api/study/:id       |  Updates a study post on database.          |
+| DELETE | /api/study/:id     |  Adds a new study post to the database.     |
+
+| GET  | /api/time/           |  Gets all of the time posts                 |
+| GET  | /api/time/:id        |  Gets all of the time posts by post ID      |
+| GET  | /api/time/user/:id   |  Gets all of the time posts by user ID      |
+| POST | /api/time/           |  Adds a new time post to the database.      |
+| PUT  | /api/time/:id        |  Updates a time post on database.           |
+| DELETE | /api/time/:id      |  Adds a new time post to the database.      |
+    
+    
+    
+    
+    {
         "username": "robert",
         "password": "password1"
+    }
+
+    {
+        "title": "Post title",
+        "description": "Post description"
     }
