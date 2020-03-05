@@ -1,7 +1,7 @@
 const knex = require('knex');
 
 //developemnt
-const env = process.emitWarning.DB_ENV || 'development'
+//const env = process.emitWarning.DB_ENV || 'development'
 
 // install add ons in heroku and use postgres
 // reveal configvars
