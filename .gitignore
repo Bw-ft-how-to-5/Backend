@@ -42,3 +42,6 @@ typings/
 .env
 # Mac files
 .DS_Store
+
+# SQLite3 Databases
+*.db3

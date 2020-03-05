@@ -4,7 +4,7 @@
   "description": "- Field contents are not checked for formatting or proper data. *Garbage in, garbage out.* - Check the `getById` output example below for the fields to send. - `POST` - all fields are required *except id*. - `PUT` - all fields are required ***including*** *id*.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch --verbose",
     "server": "nodemon index.js",
     "start": "node index.js"
   },
